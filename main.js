@@ -1,8 +1,8 @@
 import Vue from "vue"
 
-console.log("==================");
+console.log("=========测试=========");
 console.log(Vue);
-var ele=new Vue({
+var ele = new Vue({
     el: "#app",
     data: {
         message: "hello"
