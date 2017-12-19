@@ -7,7 +7,6 @@ console.log("当前目录 " + ROOT_DIR);
 module.exports = {
     entry: {
         main: ROOT_DIR + '/main.js',
-        temple: ROOT_DIR + '/template.js'
     },
     devtool: 'inline-source-map',
     output: {
@@ -29,8 +28,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin()
     ],
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.css$/,
                 use: [
                     'style-loader',
@@ -46,7 +44,15 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
+            },
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader'
+                }
             }
+
         ]
     }
 }

@@ -1,13 +1,9 @@
 import Vue from "vue"
+import App from "./src/App.vue"
 
-console.log("=========测试=========");
-console.log(Vue);
-var ele = new Vue({
-    el: "#app",
-    data: {
-        message: "hello"
-    }
+
+new Vue({
+    el: '#example',
+    template: '<App/>',
+    components: { App }
 });
-
-console.log("==================");
-console.log(ele);
