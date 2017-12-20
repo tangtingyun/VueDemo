@@ -1,20 +1,36 @@
 <template>
-  <div id="example">{{message}}</div>
+  <div id="example">{{items}}</div>
 </template>
 <script>
+import axios from "./http.js";
+
 export default {
-  data(){
-      console.log("========");
-      return {
-          message:'hello template'
-      }
+  data() {
+    return {
+      items: "5555"
+    };
+  },
+  mounted() {
+    axios
+      .get("/api/data/福利/10/1")
+      .then(function(response) {
+        console.log("========");
+        $data.items = response.data;
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  },
+  methods: {
+      
   }
-}
+};
 </script>
 
 
 <style>
-#example{
-    color: red
+#example {
+  color: red;
 }
 </style>
