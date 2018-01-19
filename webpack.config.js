@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
+/* 引用插件 */
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ROOT_DIR = path.resolve(__dirname, "");
 
 
@@ -13,7 +15,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         //filename:'my-first-webpack.bundle.js'
-        filename: '[name].js'
+        filename: '[name].[chunkhash:8].js'
     },
     devServer: {
         inline: true,
@@ -25,34 +27,41 @@ module.exports = {
         }
     },
     plugins: [
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        //  new webpack.NamedModulesPlugin(),
+        // new webpack.HotModuleReplacementPlugin()
+
+        // 生成默认页面 index.html
+        new HtmlWebpackPlugin({  // 基于模板生成 template.html
+            filename: 'index.html',
+            template: 'src/assets/template.html',
+            date: new Date()
+        })
     ],
     module: {
         rules: [{
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
-            },
-            {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
-            },
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader'
-            },
-            {
-                test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader'
-                }
+            test: /\.css$/,
+            use: [
+                'style-loader',
+                'css-loader'
+            ]
+        },
+        {
+            test: /\.(png|svg|jpg|gif)$/,
+            use: [
+                'file-loader'
+            ]
+        },
+        {
+            test: /\.vue$/,
+            loader: 'vue-loader'
+        },
+        {
+            test: /\.js$/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+                loader: 'babel-loader'
             }
+        }
 
         ]
     }
