@@ -39,6 +39,7 @@
     },
     "dependencies": {
         "axios": "^0.17.1",
-        "lodash": "^4.17.4"
+        "lodash": "^4.17.4",
+        "vue-router": "^3.0.1"
     }
 }

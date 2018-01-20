@@ -7,7 +7,8 @@ console.log("当前目录 " + ROOT_DIR);
 module.exports = {
     entry: {
         main: ROOT_DIR + '/main.js',
-        http: ROOT_DIR + '/src/http.js'
+        http: ROOT_DIR + '/src/http.js',
+        luyou: ROOT_DIR + '/src/router.js',
     },
     devtool: 'inline-source-map',
     output: {
