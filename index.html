@@ -5,16 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script>
+        console.log(navigator);
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register("./sw.js", {
+                    scope: '/VueDemo/'
+                })
+                .then(function(registration) {
+                    console.log(registration);
+                }).catch(function(err) {
+                    console.log("================")
+                    console.log(err);
+                })
+        }
+    </script>
 </head>
 
 <body>
     <div id="example">
         <Zyf></Zyf>
     </div>
-    <div id="list">
+    <div id="app">
     </div>
+    <p>hhhhhhhh</p>
 </body>
-<script src="dist/http.8dfe7833.js"></script>
-<script src="dist/main.a79e533d.js"></script>
+<!-- <script type="text/javascript" src="./dist/main.c0f6d11b.js"></script>
+<script type="text/javascript" src="./dist/http.8c90af09.js"></script>
+<script type="text/javascript" src="./dist/luyou.c2aa558d.js"></script> -->
+</body>
 
 </html>
