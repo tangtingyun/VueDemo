@@ -4,6 +4,8 @@ const path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ROOT_DIR = path.resolve(__dirname, "");
 
+const Crude = require('./plug');
+
 
 console.log("当前目录 " + ROOT_DIR);
 module.exports = {
@@ -32,37 +34,38 @@ module.exports = {
         // new webpack.HotModuleReplacementPlugin()
 
         // 生成默认页面 index.html
-        new HtmlWebpackPlugin({  // 基于模板生成 template.html
+        new HtmlWebpackPlugin({ // 基于模板生成 template.html
             filename: 'index.html',
             template: 'src/assets/template.html',
             date: new Date()
-        })
+        }),
+        new Crude(),
     ],
     module: {
         rules: [{
-            test: /\.css$/,
-            use: [
-                'style-loader',
-                'css-loader'
-            ]
-        },
-        {
-            test: /\.(png|svg|jpg|gif)$/,
-            use: [
-                'file-loader'
-            ]
-        },
-        {
-            test: /\.vue$/,
-            loader: 'vue-loader'
-        },
-        {
-            test: /\.js$/,
-            exclude: /(node_modules|bower_components)/,
-            use: {
-                loader: 'babel-loader'
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader'
+                }
             }
-        }
 
         ]
     }

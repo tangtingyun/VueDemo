@@ -4,12 +4,6 @@ import axios from "./src/http.js"
 
 import router from 'vue-router'
 
-function refresh(data) {
-
-}
-
-Vue.use(router);
-
 // var a = new Vue({
 //     el: '#list',
 //     data: {
