@@ -1,72 +1,84 @@
-const webpack = require('webpack');
-const path = require('path');
-/* 引用插件 */
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var ROOT_DIR = path.resolve(__dirname, "");
+const path = require('path')
 
-const Crude = require('./plug');
+const webpack = require('webpack')
 
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-console.log("当前目录 " + ROOT_DIR);
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+const myPlugin = require("./myPlugin")
 module.exports = {
+    // entry: './src/index.js',
+
     entry: {
-        main: ROOT_DIR + '/main.js',
-        http: ROOT_DIR + '/src/http.js',
-        luyou: ROOT_DIR + '/src/router.js',
+        "main": './src/index.js',
+        "vendor": ['react', 'react-dom']
     },
-    devtool: 'inline-source-map',
+
     output: {
         path: path.resolve(__dirname, 'dist'),
-        //filename:'my-first-webpack.bundle.js'
-        filename: '[name].[chunkhash:8].js'
+        filename: '[name].[hash:8].js',
     },
+
+
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: path.resolve(__dirname, './myLoader.js'),
+                        options: {
+                            name: 'Alice'
+                        }
+                    },
+                    'babel-loader'
+                ],
+
+            },
+        ]
+
+    },
+
+    // resolveLoader: {
+    //     modules: [
+    //         'node_modules',
+    //         path.resolve(__dirname)
+    //     ]
+    // },
+    devtool: "#cheap-module-eval-source-map",
+
     devServer: {
+        contentBase: path.resolve(__dirname, 'dist'),
+        host: "0.0.0.0",
+        port: 9090,
         inline: true,
         hot: true
     },
-    resolve: {
-        alias: {
-            vue: 'vue/dist/vue.js'
-        }
-    },
-    plugins: [
-        //  new webpack.NamedModulesPlugin(),
-        // new webpack.HotModuleReplacementPlugin()
 
-        // 生成默认页面 index.html
-        new HtmlWebpackPlugin({ // 基于模板生成 template.html
-            filename: 'index.html',
-            template: 'src/assets/template.html',
-            date: new Date()
-        }),
-        new Crude(),
-    ],
-    module: {
-        rules: [{
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
-            },
-            {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
-            },
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader'
-            },
-            {
-                test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader'
-                }
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    chunks: 'initial',
+                    name: 'vendor',
+                    test: 'vendor',
+                    enforce: true
+                },
             }
+        },
+        runtimeChunk: true
+    },
 
-        ]
-    }
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
+        new CleanWebpackPlugin(['dist']),
+        new HtmlWebPackPlugin({
+            template: "./src/index.html",
+            filename: "./index.html"
+        }),
+        // new myPlugin()
+    ],
 }
