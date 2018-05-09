@@ -1,4 +1,4 @@
-import { getOptions } from 'loader-utils';
+const getOptions = require('loader-utils')['getOptions'];
 //import validateOptions from 'schema-utils';
 
 // const schema = {
@@ -10,7 +10,7 @@ import { getOptions } from 'loader-utils';
 //     }
 // }
 
-export default function (source) {
+module.exports =  function (source) {
     const options = getOptions(this);
     console.log("=======自定义loader执行====");
     console.log(options);
