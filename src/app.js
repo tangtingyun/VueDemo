@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-
+import axios from './http';
+//http://gank.io/api/data/%E7%A6%8F%E5%88%A9/10/1
 
 class App extends Component {
-
-
-
   constructor(props) {
     super(props)
     this.state = {
@@ -12,6 +10,15 @@ class App extends Component {
     }
   }
 
+  getData() {
+    axios.get('/api/data/%E7%A6%8F%E5%88%A9/10/1')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   say = () => { console.log("why ?? ") }
 
@@ -19,7 +26,7 @@ class App extends Component {
     console.log("hhhhhhhhh");
     // this.setState({ name: "lyn" })
 
-    this.setState(function (pre,props) {
+    this.setState(function (pre, props) {
       console.log("========pre======")
       console.log(pre);
       console.log(props)
@@ -43,6 +50,8 @@ class App extends Component {
   }
 
   render() {
+    console.log("获取数据")
+    this.getData();
     return (
       <div className="App">
         <p className="App-intro">
