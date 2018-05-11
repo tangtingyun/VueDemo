@@ -1,0 +1,15 @@
+
+#div{
+    color: red;
+    align-content: center
+}
+
+/* #div:hover{
+    color: blue;
+    font-size: 3rem;
+
+} */
+
+#div::before{
+    content: "before  "
+}

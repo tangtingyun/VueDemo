@@ -18,5 +18,5 @@ module.exports =  function (source) {
 
     // 对资源应用一些转换……
 
-    return `export default ${JSON.stringify(source)}`;
+    return `export default ${source}`;
 };
