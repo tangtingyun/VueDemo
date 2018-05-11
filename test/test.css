@@ -1,7 +1,6 @@
-
-#div{
-    color: red;
-    align-content: center
+#div {
+  color: red;
+  align-content: center
 }
 
 /* #div:hover{
@@ -10,6 +9,50 @@
 
 } */
 
-#div::before{
-    content: "before  "
+#div::before {
+  content: "before  "
+}
+
+#test {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box>* {
+  flex: 1 1 400px;
+}
+
+.one {
+  background-color: red
+}
+
+.two {
+  background-color: brown
+}
+
+.three {
+  background-color: blue
+}
+
+.four {
+  background-color: chartreuse
+}
+
+.five {
+  background-color: coral
+}
+
+.six {
+  background-color: cyan
+}
+
+.seven {
+  background-color: darkkhaki
 }
