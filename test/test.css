@@ -48,11 +48,19 @@
 .five {
   background-color: coral
 }
-
+b
 .six {
   background-color: cyan
 }
 
 .seven {
   background-color: darkkhaki
+}
+
+.box *{
+  font-style: oblique
+}
+
+.img{
+  background: url('../img/sc.png')
 }

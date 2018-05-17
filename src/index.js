@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app';
+import HomeApp from './routerdemo/router';
 console.log("why???")
-ReactDOM.render(<App age="pppp"/>, document.getElementById('root'));
+ReactDOM.render(<HomeApp age="pppp"/>, document.getElementById('root'));
 

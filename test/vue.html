@@ -1,0 +1,69 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app-2">
+        <span v-bind:title="message">
+            鼠标悬停几秒钟查看此处动态绑定的提示信息！
+        </span>
+    </div>
+
+    <div id="app-1">
+        <div v-if="seen">eyes on me</div>
+        <call-hear title="hehehe"></call-hear>
+        <zyf-lyn></zyf-lyn>
+    </div>
+</body>
+
+<script>
+
+    Vue.component("zyf-lyn", {
+        data: function () {
+            return {
+                name: 'lyn'
+            }
+        },
+        template: '<div>{{name}}</div>'
+    })
+
+    var CallMe = {
+        props: ['title'],
+        data: function () {
+            return {
+                count: 0
+            }
+        },
+        template: '<button v-on:click="count++">You clicked me {{ count }} times.{{title}}</button>'
+    }
+    var app2 = new Vue({
+        el: "#app-2",
+        data: {
+            message: '页面加载于: ' + new Date().toLocaleString(),
+        },
+    })
+
+    var app1 = new Vue({
+        el: "#app-1",
+        data: {
+            seen: true
+        },
+        components: {
+            CallHear: CallMe
+        }
+        // components: {
+        //     CallMe
+        // }
+        // components:{
+        //     'CallMe':CallMe
+        // }
+    })
+</script>
+
+</html>
