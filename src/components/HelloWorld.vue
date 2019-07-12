@@ -3,7 +3,7 @@
         <ol style="text-align: left;">
             <li @click="event">EventListener</li>
             <li @click="cssPage">Element-UI</li>
-            <li @click="ui">道连格雷的画像</li>
+            <li @click="vnodePage">道连格雷的画像</li>
             <li @click="ui">月亮与六便士</li>
             <li @click="ui">圆桌派</li>
         </ol>
@@ -35,6 +35,9 @@
             },
             cssPage() {
                 this.$router.push("/css")
+            },
+            vnodePage(){
+                this.$router.push("/vnode")
             },
             ui() {
                 this.$message.error('请输入用户名')
