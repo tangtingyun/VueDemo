@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #progress-bar {
+            display: inline-block;
+            width: 0px;
+            height: 20px;
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+<div id="progress-bar"></div>
+</body>
+<script>
+    function run (el, duration) {
+        const startTime = Date.now();
+
+        function update () {
+            let p = (Date.now() - startTime) / duration;
+            console.log(" before  " + p)
+            p %= 1;
+            console.log(" after " + p)
+            el.style.width = `${300 * p}px`;
+            requestAnimationFrame(update)
+        }
+
+        update()
+    }
+
+    var bar = document.getElementById('progress-bar');
+    run(bar, 3000);
+
+    Math.trunc(0.99)
+</script>
+</html>

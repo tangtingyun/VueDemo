@@ -2,6 +2,7 @@
     <div>
         <div>兄</div>
         <div>弟</div>
+        <div class="a b"></div>
     </div>
 
 </template>
@@ -12,27 +13,27 @@
 
     export default {
         name: "VnodePage",
-        mounted() {
+        mounted () {
             this.createdTest();
             console.log(0xffff)
         },
         methods: {
-            createdTest() {
+            createdTest () {
                 let hello = Object.create(null, {
                     x: {
                         enumerable: true,
                         configurable: true,
-                        get() {
+                        get () {
                             return "world"
                         },
-                        set() {
+                        set () {
 
                         }
                     }
                 })
                 console.log(hello.x)
             },
-            assignTest() {
+            assignTest () {
                 let obj1 = {a: 0, b: {c: 0}};
                 let obj2 = Object.assign({}, obj1);
 
@@ -63,5 +64,13 @@
 </script>
 
 <style scoped>
+
+    .a {
+
+    }
+
+    .b {
+
+    }
 
 </style>
