@@ -23,27 +23,28 @@
         props: {
             msg: String
         },
-        data() {
+        data () {
             return {
                 uuu: '虽然一次使用一个选择器就很有用，但在某些情形中却可能导致效率低下。 CSS选择器在你开始组合他们时就进行细粒度选择的会更加有效。基于元素之间的相互关联关系，CSS提供了几种方法来对元素进行选择。下表使用连接符展示了这些关联关系(A和B代表前文所述的任意选择',
                 uuu2: '虽然一次使用一个选择器就很有用，但在某些情形中却可能导致效率低下。 CSS选择器在你开始组合他们时就进行细粒度选择的会更加有效。基于元素之间的相互关联关系，CSS提供了几种方法来对元素进行选择。下表使用连接符展示了这些关联关系(A和B代表前文所述的任意选择'
             }
         },
         methods: {
-            event() {
+            event () {
                 this.$router.push("/event")
             },
-            cssPage() {
+            cssPage () {
                 this.$router.push("/css")
             },
-            vnodePage(){
+            vnodePage () {
                 this.$router.push("/vnode")
             },
-            ui() {
+            ui () {
                 this.$message.error('请输入用户名')
             }
         },
-        mounted() {
+        mounted () {
+            new Promise();
             console.log(this)
             // this.axios.get('/api/dictionary/CityVideoType').then((res) => {
             //     console.log(res)
